@@ -54,5 +54,6 @@
     "platformio-ide.customPATH": "/home/seiermann/.pyenv/versions/timecube/bin/",
     "platformio-ide.useBuiltinPython": false,
     "platformio-ide.useBuiltinPIOCore": false,
-"C_Cpp.default.configurationProvider": "platformio.platformio-ide"
+"C_Cpp.default.configurationProvider": "platformio.platformio-ide",
+"cmake.ignoreCMakeListsMissing": true,
 }

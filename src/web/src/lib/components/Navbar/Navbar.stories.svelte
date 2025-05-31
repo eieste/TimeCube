@@ -7,6 +7,7 @@
 	
 	import NavSubMenu from './NavSubMenu.svelte';
 	import NavSubItem from './NavSubItem.svelte';
+	import { ArrowRightIcon } from 'svelte-feather-icons';
 
 	const { Story } = defineMeta({
 		title: 'Components/Navbar',
@@ -16,17 +17,17 @@
 
 <Story name="Basic">
 	<Navbar>
-		<NavItem href="#">foo</NavItem>
+		<NavItem href="#" icon={ArrowRightIcon}>foo</NavItem>
 	</Navbar>
 </Story>
 
 <Story name="WithProp">
 	<Navbar>
-		<NavItem href="#">foo</NavItem>
-		<NavSubMenu title="FooBar">
-            <NavSubItem href="">foo</NavSubItem>
-            <NavSubItem href="">foo</NavSubItem>
-            <NavSubItem href="">foo</NavSubItem>
+		<NavItem href="#" icon={ArrowRightIcon}>foo</NavItem>
+		<NavSubMenu title="FooBar"  icon={ArrowRightIcon}>
+            <NavSubItem href="" icon={ArrowRightIcon}>foo</NavSubItem>
+            <NavSubItem href="" icon={ArrowRightIcon}>foo</NavSubItem>
+            <NavSubItem href="" icon={ArrowRightIcon}>foo</NavSubItem>
         </NavSubMenu>
 	</Navbar>
 </Story>

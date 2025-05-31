@@ -9,7 +9,7 @@ const config = {
 			base: ''
 		},
 		alias: {
-			components: 'src/lib/components'
+			components: 'src/lib/components/*/index.svelte'
 		},
 		outDir: '../mainesp/data/web'
 	}

@@ -17,7 +17,7 @@
 		@apply h-screen w-64;
 
 		.sidebar {
-			@apply overflow-y-auto bg-gray-50 px-3 py-4 dark:bg-gray-800 h-full;
+			@apply overflow-y-auto bg-gray-50 px-3 py-4 bg-gray-800 h-full;
 
 			
 			.navbar-list {

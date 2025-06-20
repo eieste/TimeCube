@@ -7,8 +7,6 @@
         {@render children()}
     {/if}
 </ul>
-  
-
 
   
 <style lang="postcss">
@@ -18,5 +16,4 @@
             @apply flex flex-col gap-0.5 min-w-60;
         }
     }
-
 </style>

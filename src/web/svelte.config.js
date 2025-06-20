@@ -3,15 +3,23 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 const config = {
 	preprocess: vitePreprocess(),
+		path: {
+			base: '',
+			relative: false
+		},
 	kit: {
-		adapter: adapter(),
-		paths: {
-			base: ''
-		},
+		adapter: adapter({
+			// Hier den Zielpfad angeben:
+			pages: '../mainesp/data/web',
+			assets: '../mainesp/data/web',
+			fallback: null,
+			precompress:false,
+			strict: false,
+		}),
 		alias: {
-			components: 'src/lib/components/*/index.svelte'
-		},
-		outDir: '../mainesp/data/web'
+			"$components": 'src/lib/components',
+			"$config": 'src/config.ts',
+		}
 	}
 };
 

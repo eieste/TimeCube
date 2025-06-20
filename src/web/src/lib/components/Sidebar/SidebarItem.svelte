@@ -8,10 +8,6 @@
 		active = href === page.route.id;
 	}
 
-
-	console.log(href, page.route.id);
-
-	console.log(active);
 </script>
 
 

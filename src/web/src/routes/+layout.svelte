@@ -1,38 +1,76 @@
 <script lang="ts">
+	  import { onMount } from 'svelte';
 	import Header from './Header.svelte';
-	import Navbar from '../lib/components/Navbar/Navbar.svelte';
-	import NavbarItem from '../lib/components/Navbar/NavItem.svelte';
-	import NavbarSubMenu from '../lib/components/Navbar/NavSubMenu.svelte';
-	import NavbarSubItem from '../lib/components/Navbar/NavSubItem.svelte';
+	import Sidebar from '$components/Sidebar/Sidebar.svelte';
+	import SidebarItem from '$components/Sidebar/SidebarItem.svelte';
+	import SidebarSubMenu from '$components/Sidebar/SidebarSubMenu.svelte';
+	import SidebarSubItem from '$components/Sidebar/SidebarSubItem.svelte';
 	import '../app.css';
 	import type { PageProps } from './$types';
-	import {BoxIcon, SettingsIcon, WifiIcon} from 'svelte-feather-icons';
+	import {BoxIcon, SettingsIcon, WifiIcon, RefreshCcwIcon} from 'svelte-feather-icons';
 	import { page } from '$app/state';
+	
 	let { children, data } = $props();
+	
+	async function getSystemInfo() {
+		const response = await fetch(config.apiURL+'/api/v1/system')
+		const systemInfo = await response.json();
+		return systemInfo;
+	}
+
+	onMount(() => {
+		getSystemInfo();
+		intervalId = setInterval(getSystemInfo, 5000);
+		return () => {
+			clearInterval(intervalId);
+		};
+	});
 
 </script>
 
 <div class="app">
-	
-	<Navbar>
-		<NavbarItem href="/" icon={BoxIcon}>Übersicht</NavbarItem>
-		<NavbarSubMenu icon={SettingsIcon} title="Einstellungen">
-			<NavbarSubItem href="/settings/wifi" icon={WifiIcon}>WiFi</NavbarSubItem>
-			<NavbarSubItem href="#">a</NavbarSubItem>
-			<NavbarSubItem href="#">b</NavbarSubItem>
-			<NavbarSubItem href="#">c</NavbarSubItem>
-			<NavbarSubItem href="#">d</NavbarSubItem>
-		</NavbarSubMenu>
-	</Navbar>
 
-	<main>
+	<div class="h-screen w-full overflow-hidden">
 
-		<h1>{data.title}</h1>
-		<div>{@html data.content}</div>
+		<header class="relative top-0 left-0 right-0 bg-gray-800 text-white w-full">
+			<nav class="p-2">
+				<div class="flex items-center text-white my-auto">
+					<a href="#" class="font-sans antialiased text-sm text-current ml-2 mr-2 block py-1 font-semibold">TimeCube</a>
+					<div class="p-1 block right-0 mr-5 ml-auto ">
+						<ul class="align-left list-none flex flex-row space-x-2">
+							<li>
+								<RefreshCcwIcon size="16" class="animate-pulse"/>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
 
+		<div class="flex h-full relative">
+			<aside class="w-64 bg-gray-100 h-full overflow-y-auto">
+				<Sidebar>
+					<SidebarItem href="/" icon={BoxIcon}>Übersicht</SidebarItem>
+					<SidebarSubMenu icon={SettingsIcon} title="Einstellungen">
+						<SidebarSubItem href="/settings/wifi" icon={WifiIcon}>WiFi</SidebarSubItem>
+						<SidebarSubItem href="#">a</SidebarSubItem>
+						<SidebarSubItem href="#">b</SidebarSubItem>
+						<SidebarSubItem href="#">c</SidebarSubItem>
+						<SidebarSubItem href="#">d</SidebarSubItem>
+					</SidebarSubMenu>
+				</Sidebar>
 
-		{@render children()}
-	</main>
+			</aside>
+
+			<main class="flex-1 bg-white bg-red-100 overflow-y-auto">
+					<h1 class="text-2xl font-bold">{page.data.title}</h1>
+					<hr>
+					<div>
+						{@render children()}
+					</div>
+			</main>
+		</div>
+	</div>
 
 </div>
 
@@ -49,7 +87,5 @@
 		}
 	
 	}
-
-
 
 </style>

@@ -1,10 +1,10 @@
 #include <Adafruit_NeoPixel.h>
 
-const uint8_t ledsPerStripe = 7;
-const uint8_t numStripes = 12;
+const int ledsPerStripe = 7;
+const int numStripes = 12;
 
 // Pins für die 12 LED-Stripes
-const uint8_t stripePins[numStripes] = {17,16,13,0,1,3,2,4,5,6,7,8};
+const int stripePins[numStripes] = {17,16,13,0,1,3,2,4,5,6,7,8};
  //{0,1,2,3,4,5,6,7,8,9,10,11};
 // Eine Instanz pro Stripe
 Adafruit_NeoPixel* stripes[numStripes];
@@ -25,7 +25,7 @@ const int colors[12][3] = {
 };
 
 void setup() {
-  for (uint8_t i = 0; i < numStripes; i++) {
+  for (int i = 0; i < numStripes; i++) {
     stripes[i] = new Adafruit_NeoPixel(ledsPerStripe + 1, stripePins[i], NEO_GRB + NEO_KHZ800); // +1 für die Start-LED
     stripes[i]->begin();
     stripes[i]->show(); // Initialisieren
@@ -33,7 +33,7 @@ void setup() {
 }
 
 void loop() {
-  for (uint8_t y = 0; y < numStripes; y++) {
+  for (int y = 0; y < numStripes; y++) {
     stripes[y]->clear();  // Alle LEDs aus
 
 

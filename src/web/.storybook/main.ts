@@ -4,7 +4,12 @@ const config: StorybookConfig = {
 	stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|ts|svelte)'],
 	addons: [
 		'@storybook/addon-essentials',
-		'@storybook/addon-svelte-csf',
+		{
+			name: '@storybook/addon-svelte-csf',
+			options: {
+				legacyTemplate: true, // Enables the legacy template syntax
+			},
+		},
 		'@storybook/addon-interactions'
 	],
 	framework: {

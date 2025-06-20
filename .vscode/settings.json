@@ -49,7 +49,8 @@
         "stdexcept": "cpp",
         "streambuf": "cpp",
         "cinttypes": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "bitset": "cpp"
     },
     "platformio-ide.customPATH": "/home/seiermann/.pyenv/versions/timecube/bin/",
     "platformio-ide.useBuiltinPython": false,

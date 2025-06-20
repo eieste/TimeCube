@@ -1,12 +1,12 @@
 
 import type { Meta, StoryObj } from '@storybook/svelte';
-  import NavItem from './NavItem.svelte';
-  import Navbar from './Navbar.svelte';
+  import SidebarItem from './SidebarItem.svelte';
+  import Sidebar from './Sidebar.svelte';
   import * as allIcons from 'svelte-feather-icons'
 
 const meta: Meta = {
-  title: 'Components/Navbar/NavItem',
-  component: NavItem,
+  title: 'Components/Sidebar/SidebarItem',
+  component: SidebarItem,
   args:{
     icon: allIcons.ActivityIcon, // Standard-Icon
     children: "Start"
@@ -27,7 +27,7 @@ const meta: Meta = {
   decorators: [
     // Dekorator-Wrapper, um NavItem korrekt im Kontext zu rendern
     (Story) => ({
-      Component: Navbar,
+      Component: Sidebar,
       props: {
         $$slots: {
           default: [Story],
@@ -40,7 +40,7 @@ const meta: Meta = {
 
 export default meta;
 
-type Story = StoryObj<typeof NavItem>;
+type Story = StoryObj<typeof SidebarItem>;
 
 export const Default: Story = {
   args: {
